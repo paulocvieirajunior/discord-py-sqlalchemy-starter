@@ -8,6 +8,9 @@ class Admin(Cog):
     
     @command()
     async def sync(self, ctx: Context):
+        if not await self.bot.is_owner(ctx.author):
+            return
+
         commands = await self.bot.tree.sync()
         return await ctx.reply(f"🤖 {len(commands)} synchronized commands!")
 
