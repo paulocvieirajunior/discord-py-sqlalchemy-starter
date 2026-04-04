@@ -18,6 +18,6 @@ class Client(Bot):
         print(f"🚀 Bot started as {self.user}")
 
 intents = Intents.all()
-client = Client(command_prefix="$", intents=intents)
+client = Client(command_prefix="$", intents=intents, owner_id=settings.OWNER_ID)
 
 client.run(settings.BOT_TOKEN)
