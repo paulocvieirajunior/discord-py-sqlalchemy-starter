@@ -14,6 +14,9 @@ class Client(Bot):
     async def setup_hook(self):
         await self._load_cogs()
 
+    async def on_ready(self):
+        print(f"🚀 Bot started as {self.user}")
+
 intents = Intents.all()
 client = Client(command_prefix="$", intents=intents)
 
