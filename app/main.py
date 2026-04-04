@@ -1,3 +1,4 @@
+from app.core import settings
 from discord.ext.commands import Bot
 
 class Client(Bot):
@@ -5,4 +6,4 @@ class Client(Bot):
         pass
 
 client = Client()
-# client.run()
+client.run(settings.BOT_TOKEN)
