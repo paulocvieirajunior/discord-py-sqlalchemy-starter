@@ -1,10 +1,18 @@
 from core import settings
+
 from discord import Intents
 from discord.ext.commands import Bot
 
+from os import listdir
+
 class Client(Bot):
+    async def _load_cogs(self):
+        for cog in listdir("app/cogs"):
+            if cog.endswith(".py"):
+                await self.load_extension(f"cogs.{cog[:-3]}")
+
     async def setup_hook(self):
-        pass
+        await self._load_cogs()
 
 intents = Intents.all()
 client = Client(command_prefix="$", intents=intents)
